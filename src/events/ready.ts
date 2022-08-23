@@ -51,17 +51,6 @@ export default {
         const fisherID = '574652751745777665';
         // Send message
 
-        // Check shop
         channel.sendSlash(fisherID, 'shop rods');
     },
 } as TEvent;
-const t = (
-    client: Discord.Client,
-    fish: number,
-    channel: Discord.TextBasedChannel,
-    id: string
-) => {
-    if (fish < Date.now()) {
-        channel.sendSlash(id, 'fish');
-    }
-};
