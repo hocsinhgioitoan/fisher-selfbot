@@ -10,7 +10,7 @@ config();
 const client = new Client({
     checkUpdate: false,
     presence: {
-        status: 'invisible'
+        status: 'dnd'
     }
 });
 

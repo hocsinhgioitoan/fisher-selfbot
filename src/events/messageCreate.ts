@@ -31,6 +31,7 @@ export default {
             message.content === 'You may now continue.'
         ) {
             console.log('[CAPTCHA] Giải thành công...');
+            client.giai.set('captcha', true);
             await sleep(5000).then(
                 async () =>
                     await message.channel.sendSlash(fisherID, 'shop rods')
@@ -245,9 +246,10 @@ export default {
                 ':information_source: To continue, solve the captcha posted above with the **%verify** command.\n' +
                     'If the code is unreadable, you can use the **%verify regen** command.'
             ) {
-                setTimeout(() => {
-                    process.exit(1);
-                }, 1000 * 60);
+                if (!client.giai.get('captcha'))
+                    setTimeout(() => {
+                        process.exit(1);
+                    }, 1000 * 60 * 30);
             }
         }
     },
