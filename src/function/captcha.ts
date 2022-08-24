@@ -24,7 +24,7 @@ const solveCaptcha = async function (
     username: string,
     apikey: string,
     FolderPath: string
-): Promise<{ result: string | undefined } | undefined> {
+): Promise<string | undefined> {
     if (!username || !apikey || username == '' || apikey == '')
         return undefined;
     const Path = path.resolve(FolderPath, 'captcha.png');
@@ -34,6 +34,7 @@ const solveCaptcha = async function (
         userid: username,
         apikey: apikey,
         data: base64_encode(Path),
+        case: 'mixed'
     };
     return new Promise(async (resolve, reject) => {
         const response = await axios

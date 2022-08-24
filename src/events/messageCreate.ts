@@ -38,16 +38,13 @@ export default {
             );
         }
 
-        const embed = message.embeds
-            .filter((e) => e.title !== 'Official Server')
-            .filter(
-                (e) =>
-                    e.description !==
-                    ':chart_with_upwards_trend: Reminder: Vote with **/vote** for rewards!'
-            )
-            .filter(
-                (e) => e.title !== `Help support Virtual Fisher's development`
-            )[0];
+        const embed = message.embeds.find(
+            (e) =>
+                e.description !==
+                    ':chart_with_upwards_trend: Reminder: Vote with **/vote** for rewards!' &&
+                e.title !== 'Official Server' &&
+                e.title !== `Help support Virtual Fisher's development`
+        );
         if (embed) {
             if (message.interaction?.user.id !== client.user.id) return;
             // Câu cá
@@ -60,7 +57,7 @@ export default {
                     await message.channel
                         .sendSlash(fisherID, 'sell')
                         .catch((e) => console.log);
-                    client.time.set('sell', 1000 * 60 * 10);
+                    client.time.set('sell', Date.now() + 1000 * 60 * 10);
                 }
                 if (embed.description?.includes('You ran out of')) {
                     return await message.channel
@@ -229,13 +226,14 @@ export default {
                     embed.image?.url || '',
                     'hoanghaianh',
                     '5JzPnvYKF7iyHGIBYBXG',
-                    './captcha.png'
+                    '.'
                 );
-                if (foo?.result) {
+                console.log(foo);
+                if (foo) {
                     return await message.channel.sendSlash(
                         fisherID,
                         'verify',
-                        foo.result
+                        foo
                     );
                 } else {
                     console.log('[CAPTCHA] Giải thất bại, đang thoát....');

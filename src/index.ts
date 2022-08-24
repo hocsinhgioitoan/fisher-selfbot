@@ -25,6 +25,7 @@ fs.readdirSync(path.join(__dirname, 'events')).forEach(async (file) => {
 
 // Something
 client.time = new Discord.Collection();
+client.giai = new Discord.Collection();
 
 // Login
 client
