@@ -6,7 +6,7 @@
 - Lỗi gửi vào đây: https://github.com/hocsinhgioitoan/fisher-selfbot/issues
 - Replit: ai đon nâu =)) 
 - Temux: cũng ai đon nâu.
-# Tính năng: v0.0.3
+# Tính năng: v0.0.2
 ## Refactor
 - Làm lại messageCreate để chạy chơn chu hơn :>
 ## Fix
